@@ -1,5 +1,3 @@
-import javax.xml.transform.Result;
-
 /**
  * Created by JiaoShuntian on 2017/5/17.
  */
@@ -17,7 +15,7 @@ public class Factorialize {
 
     //运用递归
     public static int factorialize2(int n) {
-        int result = 1;
+        int result;
         if (n < 0)
             throw new IllegalArgumentException("必须为正整数！");
         if (n == 1) {

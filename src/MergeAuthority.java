@@ -1,3 +1,7 @@
+/**
+ *合并权限串
+ * Created by JiaoShuntian
+ */
 public class MergeAuthority{
     public static void main(String[]args){
         String rightValues1 = "1001100";
