@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        function test() {
-            var data = new Date();
-            alert(data);
+        function append(arr, item) {
+            var nArr = arr;
+            nArr[arr.length] = item;
+            return nArr;
         }
-        test();
+        alert(append([1,2,3,4],10));
     </script>
 </head>
 <body>
