@@ -1,6 +1,7 @@
 package datestructure;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by JiaoShuntian on 2017/10/25.
@@ -8,14 +9,16 @@ import java.util.Date;
  */
 public class MaxSubseqSum {
     public static void main(String[] args) {
-        int[] a = {3,-1,2,1,-9,3,3,9};
+        int[] a = new int[2000];
+        Random random = new Random();
+        for (int i = 0; i < a.length; i++) {
+            a[i] = random.nextInt(30) - 15;
+        }
         long startTime = System.nanoTime();
         // ... the code being measured ...
+        System.out.println(maxSubseqSum3(a, a.length));
         long estimatedTime = System.nanoTime() - startTime;
-        System.out.println(System.currentTimeMillis());
-        System.out.println(System.nanoTime());
         System.out.println(estimatedTime);
-        //System.out.println(maxSubseqSum2(a,a.length));
     }
 
     //算法1
@@ -43,10 +46,25 @@ public class MaxSubseqSum {
         for (int i = 0; i < n; i++) {//i是子列最左端位置
             thisSum = 0;//thisSum是a[i]到a[j]的子列和
             for (int j = i; j < n; j++) {//j是子列最右端位置
-               thisSum += a[j];
-               if (thisSum > maxSum) {
-                   maxSum = thisSum;
-               }
+                thisSum += a[j];
+                if (thisSum > maxSum) {
+                    maxSum = thisSum;
+                }
+            }
+        }
+        return maxSum;
+    }
+
+    //算法3
+    static int maxSubseqSum3(int a[], int n) {
+        int maxSum = 0;
+        int thisSum = 0;
+        for (int i = 0; i < n; i++) {
+            thisSum += a[i];
+            if (thisSum > maxSum) {
+                maxSum = thisSum;
+            } else if (thisSum < 0) {
+                thisSum = 0;
             }
         }
         return maxSum;
